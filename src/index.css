@@ -1,11 +1,26 @@
 :root {
+  --title-text-color: #333333;
+  --primary-grey-text-color: #363636;
+  --secondary-grey-text-color: #666666;
+  --light-grey-text-color: #8d8d8d;
+
+  --primary-light-text-color: #ffffff;
+
+  --border-color: #d1d5db;
+
+  --body-background-color: #f5f5f5;
+  --background-color: #ffffff;
+
+  --primary-brand-color: #0da69c;
+
+  --boder-radius-size: 0.8rem;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--primary-grey-text-color);
+  background-color: var(--body-background-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,56 +28,86 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+html {
+  font-size: 62.5%;
+  height: 100%;
 }
-a:hover {
-  color: #535bf2;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  margin: 0;
+  min-height: 100%;
+  overflow: auto;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  color: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
 }
 
 h1 {
-  font-size: 3.2em;
+  margin: 0 0 13rem;
+  font-size: 3.2rem;
   line-height: 1.1;
+  color: var(--title-text-color);
+}
+
+h2 {
+  margin: 0 0 11rem;
+  font-size: 2.4rem;
+  line-height: 1.375;
+  color: var(--title-text-color);
+}
+
+h3 {
+  margin: 0 0 4rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--title-text-color);
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
+  margin: 0;
+  padding: 0.8rem 2rem;
+  font-size: 1.4rem;
+  line-height: 1.36;
+  font-weight: 700;
   font-family: inherit;
-  background-color: #1a1a1a;
+  color: var(--primary-light-text-color);
+  letter-spacing: 0.05rem;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: none;
+  border-radius: var(--boder-radius-size);
+  background-color: var(--primary-brand-color);
+  box-shadow: none;
+  transition: box-shadow 0.25s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover {
+  box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(100, 116, 139, 0.4);
+}
+
+button:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(100, 116, 139, 0.7);
+}
+
+#root {
+  width: 100%;
 }
