@@ -4,12 +4,17 @@
   align-items: flex-start;
   cursor: pointer;
   transition: border-color 0.25s;
+  text-align: left;
 
   &:hover {
     .checkboxListItem__checkBoxFakeIcon_default {
       border-color: var(--secondary-grey-text-color);
     }
   }
+  &_disabled {
+    opacity: 0.6;
+  }
+
   &__checkboxHidden {
     position: absolute;
     left: 0;
@@ -18,24 +23,23 @@
     padding: 0;
     width: 0;
     height: 0;
-    overflow: hidden;
-    visibility: hidden;
+    opacity: 0;
   }
   &__checkBoxFake {
     position: relative;
-    margin: 0 0.9rem 0 0;
-    padding: 0.3rem;
+    margin: 0 9px 0 0;
+    padding: 3px;
     display: block;
-    flex: 0 0 2.4rem;
-    width: 2.4rem;
-    height: 2.4rem;
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
   }
   &__checkBoxFakeIcon {
     position: absolute;
-    left: 0.3rem;
-    right: 0.3rem;
-    top: 0.3rem;
-    bottom: 0.3rem;
+    left: 3px;
+    right: 3px;
+    top: 3px;
+    bottom: 3px;
     display: block;
     width: auto;
     max-width: 100%;
@@ -43,8 +47,8 @@
     transition: opacity 0.2s;
 
     &_default {
-      border: 0.2rem solid var(--primary-grey-text-color);
-      border-radius: 0.2rem;
+      border: 2px solid var(--primary-grey-text-color);
+      border-radius: 2px;
     }
     &_active,
     &_hide {
@@ -59,28 +63,29 @@
     flex: 1 1 auto;
   }
   &__title {
-    padding-top: 0.2rem;
+    padding-top: 2px;
     display: block;
-    font-size: 1.4rem;
+    font-size: 14px;
     line-height: 1.42;
     font-weight: 600;
     color: var(--primary-grey-text-color);
   }
   &__subtitle {
     display: block;
-    margin-top: 0.4rem;
-    font-size: 1.2rem;
+    margin-top: 4px;
+    font-size: 12px;
     line-height: 1.375;
     color: var(--secondary-grey-text-color);
   }
   &__image {
-    margin-top: 0.3rem;
-    width: 3rem;
-    height: 1.8rem;
+    margin-top: 3px;
+    margin-left: 10px;
+    width: 30px;
+    height: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex: 0 0 3rem;
+    flex: 0 0 30px;
     img {
       display: block;
       max-height: 100%;

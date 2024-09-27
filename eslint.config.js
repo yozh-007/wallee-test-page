@@ -8,18 +8,11 @@ import react from 'eslint-plugin-react';
 export default tseslint.config(
   { ignores: ['dist'] },
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommendedTypeChecked,
-    ],
-    files: ['**/*.{ts,tsx}'],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['src/*.{ts,tsx}', 'src/**/*.{ts,tsx}', 'src/**/**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
     },
     settings: { react: { version: '18.3' } },
     plugins: {
@@ -32,8 +25,6 @@ export default tseslint.config(
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
-        ...react.configs.recommended.rules,
-        ...react.configs['jsx-runtime'].rules,
       ],
     },
   },

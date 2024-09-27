@@ -1,13 +1,9 @@
 import cn from 'classnames';
 import checkboxChecked from './assets/checkboxChecked.svg';
 import styles from './CheckboxListItem.module.scss';
+import { OptionProps } from '../../types.ts';
 
-export interface CheckboxListItemProps {
-  title?: string;
-  subtitle?: string;
-  imageUrl?: string;
-  value: string;
-  checked: boolean;
+interface CheckboxListItemProps extends OptionProps {
   onClick: (value: string, checked: boolean) => void;
 }
 
@@ -17,15 +13,22 @@ export function CheckboxListItem({
   imageUrl,
   value,
   checked,
+  disabled,
   onClick,
 }: CheckboxListItemProps) {
   return (
-    <label className={styles.checkboxListItem} htmlFor={value}>
+    <label
+      className={cn(styles.checkboxListItem, {
+        [styles.checkboxListItem_disabled]: disabled,
+      })}
+      htmlFor={value}
+    >
       <input
         className={styles.checkboxListItem__checkboxHidden}
         id={value}
         type="checkbox"
         checked={checked}
+        disabled={disabled}
         onChange={e => {
           e.stopPropagation();
           onClick(value, !checked);
@@ -55,7 +58,9 @@ export function CheckboxListItem({
       </span>
       <span className={styles.checkboxListItem__content}>
         <span className={styles.checkboxListItem__title}>{title}</span>
-        <span className={styles.checkboxListItem__subtitle}>{subtitle}</span>
+        {subtitle && (
+          <span className={styles.checkboxListItem__subtitle}>{subtitle}</span>
+        )}
       </span>
       <span className={styles.checkboxListItem__image}>
         {imageUrl && <img src={imageUrl} alt={`${title} - icon`} />}

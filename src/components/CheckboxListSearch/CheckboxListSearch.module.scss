@@ -2,8 +2,8 @@
   position: relative;
   &__input {
     width: 100%;
-    padding: 1.1rem 3.2rem 1.1rem 1.2rem;
-    font-size: 1.4rem;
+    padding: 11px 32px 11px 12px;
+    font-size: 14px;
     line-height: 1.375;
     color: #333;
     border-radius: var(--boder-radius-size);
@@ -22,7 +22,7 @@
     &:focus,
     &:hover {
       outline: none;
-      box-shadow: 1px 1px 4px 0px rgba(100, 116, 139, 0.25);
+      box-shadow: 1px 1px 4px 0 rgba(100, 116, 139, 0.25);
     }
 
     &::placeholder {
@@ -30,13 +30,13 @@
     }
   }
   &__lenth {
-    --size: 2.4rem;
+    --size: 24px;
 
     position: absolute;
-    right: 1.2rem;
+    right: 12px;
     top: 50%;
     margin-top: calc(var(--size) * -0.5);
-    padding: 0.3rem;
+    padding: 3px;
     display: block;
     width: var(--size);
     height: var(--size);

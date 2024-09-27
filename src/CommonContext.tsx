@@ -1,50 +1,55 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import {
-  convertFetchedState,
-  fetchPageSchema,
-  useLocalStorageState,
-} from './utilities.ts';
+import { convertFetchedState, fetchPageSchema } from './utilities';
+import { useLocalStorageState } from './hooks';
 import isEmpty from 'lodash.isempty';
+import {
+  ContextValueProps,
+  convertedCommonStateProps,
+  QueryResponseProps,
+} from './types.ts';
 
-const CommonContext = React.createContext({});
+export const CommonContext = React.createContext<ContextValueProps>({
+  commonPageSchema: {
+    title: '',
+    components: {
+      component: {
+        type: 'component',
+      },
+    },
+  },
+} as unknown as ContextValueProps);
 
-export const CommonContextProvider = ({ children }) => {
-  const [commonPageSchema, setCommonPageSchema] = useLocalStorageState(
-    'pageSchema',
-    {},
-  );
+export const CommonContextProvider = ({
+  children,
+}: React.PropsWithChildren) => {
+  const [commonPageSchema, setCommonPageSchema] =
+    useLocalStorageState<convertedCommonStateProps>(
+      'pageSchema',
+      {} as convertedCommonStateProps,
+    );
 
-  const { isPending, error, data } = useQuery({
+  const { isPending, error, data }: QueryResponseProps = useQuery({
     queryKey: ['page-schema'],
     queryFn: fetchPageSchema,
   });
 
   React.useEffect(() => {
-    if (!isEmpty(data)) setCommonPageSchema(convertFetchedState(data));
-  }, [data]);
+    if (!isEmpty(data)) {
+      setCommonPageSchema(convertFetchedState(data));
+    }
+  }, [setCommonPageSchema, data]);
+
+  const contextValue: ContextValueProps = {
+    isPending,
+    error,
+    commonPageSchema,
+    setCommonPageSchema,
+  };
 
   return (
-    <CommonContext.Provider
-      value={{
-        isPending,
-        error,
-        commonPageSchema,
-        setCommonPageSchema,
-      }}
-    >
+    <CommonContext.Provider value={contextValue}>
       {children}
     </CommonContext.Provider>
   );
-};
-
-export const useCommonContext = () => {
-  const context = React.useContext(CommonContext);
-  if (context === undefined) {
-    throw new Error(
-      'ComponentsRenderer and its children should be used within a CommonContextProvider',
-    );
-  }
-
-  return context;
 };

@@ -1,12 +1,21 @@
 .checkboxListPanel {
-  padding: 24px 20px 0.4rem;
-  border: 1px solid #d1d5db;
+  padding: 24px 20px;
+  font-size: 12px;
+  line-height: 1.375;
+  color: var(--secondary-grey-text-color);
+  text-align: center;
+  border: 1px solid var(--border-color);
   box-shadow:
-    0px 10px 15px -3px #64748b1f,
-    0px 4px 6px -2px #64748b0d;
-  border-radius: 8px;
+    0 10px 15px -3px #64748b1f,
+    0 4px 6px -2px #64748b0d;
+  border-radius: var(--boder-radius-size);
   background-color: #fff;
-  &__element {
-    margin-bottom: 2rem;
+  &__element + .checkboxListPanel__element {
+    margin-top: 20px;
+  }
+  &__element_justifyElements {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
   }
 }

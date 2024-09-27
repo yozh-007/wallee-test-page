@@ -1,20 +1,27 @@
-import React from 'react';
+import isEmpty from 'lodash.isempty';
 
-import { CheckboxListPanel } from '../CheckboxListPanel/CheckboxListPanel.tsx';
-import { useCommonContext } from '../../CommonContext.tsx';
+import { useCommonContext } from '../../hooks';
+import { prepareComponentsList } from './utilities.ts';
+import { Loader } from '../Loader/Loader.tsx';
+import { ErrorHandler } from '../ErrorHandler/ErrorHandler.tsx';
 
 export function ComponentsRenderer() {
-  // @ts-ignore
-  const { commonPageSchema } = useCommonContext();
+  const { isPending, error, commonPageSchema } = useCommonContext();
 
-  const pageTitleData = commonPageSchema?.components?.['page-title'];
-  const checkboxListPanelData =
-    commonPageSchema?.components?.['checkbox-list-panel'];
+  if (isEmpty(commonPageSchema)) {
+    switch (true) {
+      case isPending:
+        return <Loader />;
+      case Boolean(error):
+        return <ErrorHandler error={error} />;
+      default:
+        return null;
+    }
+  }
+
+  const componentList = prepareComponentsList(commonPageSchema);
 
   return (
-    <>
-      {pageTitleData && <h2>{pageTitleData.label}</h2>}
-      {checkboxListPanelData && <CheckboxListPanel />}
-    </>
+    <>{componentList?.map((Component, index) => <Component key={index} />)}</>
   );
 }

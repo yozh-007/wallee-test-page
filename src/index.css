@@ -13,7 +13,7 @@
 
   --primary-brand-color: #0da69c;
 
-  --boder-radius-size: 0.8rem;
+  --boder-radius-size: 8px;
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -29,7 +29,6 @@
 }
 
 html {
-  font-size: 62.5%;
   height: 100%;
 }
 
@@ -61,35 +60,38 @@ img {
 }
 
 h1 {
-  margin: 0 0 13rem;
-  font-size: 3.2rem;
+  margin: 0 0 130px;
+  font-size: 32px;
   line-height: 1.1;
+  font-weight: 600;
   color: var(--title-text-color);
 }
 
 h2 {
-  margin: 0 0 11rem;
-  font-size: 2.4rem;
+  margin: 0 0 110px;
+  font-size: 24px;
   line-height: 1.375;
+  font-weight: 600;
   color: var(--title-text-color);
 }
 
 h3 {
-  margin: 0 0 4rem;
-  font-size: 2rem;
+  margin: 0 0 40px;
+  font-size: 20px;
   line-height: 1.2;
+  font-weight: 600;
   color: var(--title-text-color);
 }
 
 button {
   margin: 0;
-  padding: 0.8rem 2rem;
-  font-size: 1.4rem;
+  padding: 8px 20px;
+  font-size: 14px;
   line-height: 1.36;
   font-weight: 700;
   font-family: inherit;
   color: var(--primary-light-text-color);
-  letter-spacing: 0.05rem;
+  letter-spacing: 0.5px;
   cursor: pointer;
   border: none;
   border-radius: var(--boder-radius-size);
@@ -99,14 +101,32 @@ button {
 }
 
 button:hover {
-  box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(100, 116, 139, 0.4);
+  box-shadow: 1px 1px 4px 1px rgba(100, 116, 139, 0.4);
 }
 
 button:focus,
 button:focus-visible {
   outline: none;
-  box-shadow: 0.1rem 0.1rem 0.4rem 0.1rem rgba(100, 116, 139, 0.7);
+  box-shadow: 1px 1px 4px 1px rgba(100, 116, 139, 0.7);
 }
+
+.textButton {
+  padding: 8px 4px;
+  color: var(--primary-brand-color);
+  background-color: transparent;
+  transition: opacity 0.25s;
+  border-radius: 0;
+}
+
+.textButton:hover,
+.textButton:focus,
+.textButton:focus-visible {
+  box-shadow: none;
+}
+.textButton:hover {
+  opacity: .6;
+}
+
 
 #root {
   width: 100%;

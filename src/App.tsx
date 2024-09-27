@@ -1,39 +1,37 @@
 import React from 'react';
 import styles from './App.module.scss';
-import { useCommonContext } from './CommonContext.tsx';
-import isEmpty from 'lodash.isempty';
+
+import { CommonContextProvider } from './CommonContext.tsx';
+
+import { DemoBlock } from './components/DemoBlock/DemoBlock.tsx';
 import { ComponentsRenderer } from './components/ComponentsRenderer/ComponentsRenderer.tsx';
 
 function App() {
   const [showPanel, setShowPanel] = React.useState(false);
-  // @ts-ignore
-  const { isPending, error, commonPageSchema } = useCommonContext();
+
+  if (!showPanel) {
+    return (
+      <div className={styles.app}>
+        <div className={styles.app__container}>
+          <DemoBlock
+            demoTitle="Start here..."
+            demoButtonText={'Get components'}
+            onButtonClick={() => setShowPanel(true)}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className={styles.app}>
-      {isEmpty(commonPageSchema) && !showPanel ? (
+    <CommonContextProvider>
+      <div className={styles.app}>
         <div className={styles.app__container}>
-          <h2 className={styles.app__demoTitle}>Start here...</h2>
-          <div className={styles.app__demoPanel}>
-            <button className={styles.app__demoButton} onClick={onClick}>
-              Get components
-            </button>
-          </div>
+          <ComponentsRenderer />
         </div>
-      ) : (
-        <div className={styles.app__container}>
-          {isPending && isEmpty(commonPageSchema) && <p>Loading...</p>}
-          {error && <p>{`An error has occurred: ${error.message}`}</p>}
-          {!isEmpty(commonPageSchema) && <ComponentsRenderer />}
-        </div>
-      )}
-    </div>
+      </div>
+    </CommonContextProvider>
   );
-
-  function onClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    e.preventDefault();
-    setShowPanel(true);
-  }
 }
 
 export default App;

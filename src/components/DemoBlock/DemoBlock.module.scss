@@ -1,0 +1,21 @@
+.demoBlock {
+  &__title {
+    letter-spacing: 1px;
+  }
+  &__panel {
+    display: flex;
+    align-items: flex-end;
+    padding: 24px 20px;
+    min-height: 150px;
+    border: 1px solid var(--border-color);
+    box-shadow:
+      0 10px 15px -3px #64748b1f,
+      0 4px 6px -2px #64748b0d;
+    border-radius: var(--boder-radius-size);
+    background-color: var(--background-color);
+  }
+  &__button {
+    padding: 14px 20px;
+    font-size: 18px;
+  }
+}
