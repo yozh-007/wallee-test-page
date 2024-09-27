@@ -1,0 +1,89 @@
+.checkboxListItem {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: border-color 0.25s;
+
+  &:hover {
+    .checkboxListItem__checkBoxFakeIcon_default {
+      border-color: var(--secondary-grey-text-color);
+    }
+  }
+  &__checkboxHidden {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  &__checkBoxFake {
+    position: relative;
+    margin: 0 0.9rem 0 0;
+    padding: 0.3rem;
+    display: block;
+    flex: 0 0 2.4rem;
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+  &__checkBoxFakeIcon {
+    position: absolute;
+    left: 0.3rem;
+    right: 0.3rem;
+    top: 0.3rem;
+    bottom: 0.3rem;
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    transition: opacity 0.2s;
+
+    &_default {
+      border: 0.2rem solid var(--primary-grey-text-color);
+      border-radius: 0.2rem;
+    }
+    &_active,
+    &_hide {
+      opacity: 0;
+    }
+    &_show {
+      opacity: 1;
+    }
+  }
+  &__content {
+    display: block;
+    flex: 1 1 auto;
+  }
+  &__title {
+    padding-top: 0.2rem;
+    display: block;
+    font-size: 1.4rem;
+    line-height: 1.42;
+    font-weight: 600;
+    color: var(--primary-grey-text-color);
+  }
+  &__subtitle {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 1.2rem;
+    line-height: 1.375;
+    color: var(--secondary-grey-text-color);
+  }
+  &__image {
+    margin-top: 0.3rem;
+    width: 3rem;
+    height: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 3rem;
+    img {
+      display: block;
+      max-height: 100%;
+    }
+  }
+}
