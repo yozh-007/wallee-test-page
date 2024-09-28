@@ -1,4 +1,4 @@
-import lensImg from './assets/lenth.svg';
+import lensImg from '/assets/lenth.svg';
 import styles from './CheckboxListSearch.module.scss';
 
 export function CheckboxListSearch({

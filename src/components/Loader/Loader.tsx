@@ -1,4 +1,4 @@
-import ripple from './assets/ripple.svg';
+import ripple from '/assets/ripple.svg';
 import styles from './Loader.module.scss';
 
 export const Loader = () => {

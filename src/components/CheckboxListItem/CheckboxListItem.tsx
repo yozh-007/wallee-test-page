@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import checkboxChecked from './assets/checkboxChecked.svg';
+import checkboxChecked from '/assets/checkboxChecked.svg';
 import styles from './CheckboxListItem.module.scss';
 import { OptionProps } from '../../types.ts';
 
